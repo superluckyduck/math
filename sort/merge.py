@@ -3,10 +3,9 @@ class Merge:
         import math
         if(len(arr)<2):
             return arr
-        s = Merge()
         middle = math.floor(len(arr)/2)
         left, right = arr[0:middle], arr[middle:]
-        return s.merge(s.mergeSort(left), s.mergeSort(right))
+        return self.merge(self.mergeSort(left), self.mergeSort(right))
 
     def merge(self,left,right):
         result = []
