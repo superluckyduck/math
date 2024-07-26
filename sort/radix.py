@@ -24,15 +24,14 @@ class Radix:
     def radix_sort(self,arr):
         # 找到最大值，以确定最大位数
         max_value = max(arr)
-        s = Radix()
         # 对每一位进行排序
         exp = 1
         while max_value // exp > 0:
-            s.radixSort(arr, exp)
+            self.radixSort(arr, exp)
             exp *= 10
         return arr
 
-# 测试计数排序
+# 测试基数排序
 if __name__ == "__main__":
     s = Radix()
     arr = [2, 3, 5, 4, 1]
