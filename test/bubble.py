@@ -59,6 +59,42 @@ class Sort:
         while right:
             res.append(right.pop(0))
         return res
+    def Heap(self,arr):
+        n = len(arr)
+        for i in range(math.floor(n/2)-1,-1,-1):
+            self.heapify(arr,i,n)
+        for i in range(n-1,-1,-1):
+            arr[0],arr[i] = arr[i],arr[0]
+            self.heapify(arr,0,i)
+
+
+    def heapify(self,arr,i,arrlen):
+        while(True):
+            left = 2*i+1
+            right = 2*i +2
+            max = i
+            if left<arrlen and arr[left]>arr[max]:
+                max = left
+            if right<arrlen and arr[right]>arr[max]:
+                max = right
+            if i == max:
+                break
+            arr[i],arr[max] = arr[max],arr[i]
+            i = max
+    def Bucket(self,arr,size):
+        maxVal = max(arr)
+        minVal = min(arr)
+        count = math.floor((maxVal-minVal)/size)+1
+        buckets = [[] for _ in range(count)]
+        for num in arr:
+            index = (num-minVal)//size
+            buckets[index].append(num)
+        out = []
+        for bucket in buckets:
+            out.extend(sorted(bucket))
+        for i in range(len(arr)):
+            arr[i] = out[i]
+
 
 
 
@@ -68,6 +104,8 @@ if __name__ == "__main__":
     # s.Bubblesort(array)
     # s.Quick(array)
     # s.Insert(array)
-    new = s.Merge(array)
+    # s.Heap(array)
+    s.Bucket(array,2)
+    # new = s.Merge(array)
     print(array)
-    print(new)
+    # print(new)
